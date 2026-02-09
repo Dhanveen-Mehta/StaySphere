@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=searchedListing.title%></title>
+</head>
+<body>
+    <p>
+        Listing Id = <%= searchedListing._id%> <br>
+        Listing Title = <%= searchedListing.title%><br>
+        Listing Price = <%= searchedListing.price%><br>
+        Listing Location = <%= searchedListing.location%><br>
+        Listing Country = <%= searchedListing.country%><br>
+    </p>
+    <img src="<%=searchedListing.image.url%>">
+</body>
+</html> 
