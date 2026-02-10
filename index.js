@@ -103,7 +103,8 @@ app.get("/listings/:id/edit", async function(req,res){
 
 app.put("/listings/:id/edit", async function(req,res){
     let{title,description,url,price,country,location} = req.body;
-    let updatedListing = new Listing({
+    let {id} = req.params;
+    let updatedListing = await Listing.findByIdAndUpdate(id,{
         title:title,
         description:description,
         image:{
@@ -113,7 +114,7 @@ app.put("/listings/:id/edit", async function(req,res){
         location:location,
         country:country
     });
-    await updatedListing.save();
+    //await updatedListing.save();
     console.log("Data Updated Safely");
     res.redirect("/listings");
 
