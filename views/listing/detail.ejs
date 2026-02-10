@@ -9,10 +9,17 @@
     <p>
         Listing Id = <%= searchedListing._id%> <br>
         Listing Title = <%= searchedListing.title%><br>
-        Listing Price = <%= searchedListing.price%><br>
+        Listing Price = <b>₹<%= searchedListing.price.toLocaleString("en-IN")%></b><br>
         Listing Location = <%= searchedListing.location%><br>
         Listing Country = <%= searchedListing.country%><br>
     </p>
     <img src="<%=searchedListing.image.url%>">
+    <form method="get" action="/listings/<%=searchedListing._id%>/edit">
+            <button>Edit</button>
+    </form>
+    <form method="post" action="/listings/<%= searchedListing._id%>/delete?_method=DELETE">
+        <button>Delete Listing</button>
+    </form>
+    
 </body>
 </html> 

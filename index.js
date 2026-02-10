@@ -58,6 +58,7 @@ app.get("/listings", async function(req,res){
     //console.log(allListings);
     res.render("listing/listing.ejs",{allListings})
 })
+//-----------------------------------------------------------------------------------------------------------------------------
 
 // Yaha Hum show route banayenge joh particular post ko dekhne ke liye 
 
@@ -66,6 +67,7 @@ app.get("/listings/:id/show", async function(req,res){
     let searchedListing = await Listing.findById(id);
     res.render("listing/detail.ejs",{searchedListing})
 });
+//------------------------------------------------------------------------------------------------------------------------------
 
 // Yaha Ham New Listing ko add karne ke liye route banayenge
 
@@ -75,6 +77,55 @@ app.get("/listings/new", async function(req,res){
 
 app.post("/listings/new", async function(req,res){
     let{title,description,url,price,country,location} = req.body;
-    res.send("data in console")
-    console.log(title,description,url,price,country,location)
+    let newListing = new Listing({
+        title:title,
+        description:description,
+        image:{
+            url:url
+        },
+        price:price,
+        location:location,
+        country:country
+    });
+    await newListing.save();
+    console.log("Data Saved Safely")
+    //console.log(title,description,url,price,country,location);
+   res.redirect("/listings");
 })
+//-----------------------------------------------------------------------------------------------------------------------------
+
+//Yaha ab hum listing ki details ko edit aur update karne ke liye route create karenge
+app.get("/listings/:id/edit", async function(req,res){
+    let {id}=req.params;
+    let searchedListing = await Listing.findById(id);
+    res.render("listing/edit.ejs",{searchedListing});
+});
+
+app.put("/listings/:id/edit", async function(req,res){
+    let{title,description,url,price,country,location} = req.body;
+    let updatedListing = new Listing({
+        title:title,
+        description:description,
+        image:{
+            url:url
+        },
+        price:price,
+        location:location,
+        country:country
+    });
+    await updatedListing.save();
+    console.log("Data Updated Safely");
+    res.redirect("/listings");
+
+});
+//----------------------------------------------------------------------------------------------------------------------------------
+
+// Yaha ham delete route create karenge joh hamari listing ko delete karr dega 
+app.delete("/listings/:id/delete", async function(req,res){
+    let {id} = req.params;
+    let searchedListing = await Listing.findByIdAndDelete(id);
+    console.log("Listing Deleted",searchedListing);
+    res.redirect("/listings");
+});
+//-----------------------------------------------------------------------------------------------------------------------------------
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>You are about to edit listing with id=<%=searchedListing._id%></h2>
+     <form method="POST" action="/listings/<%=searchedListing._id%>/edit?_method=PUT">
+        <input type="text" name="title" placeholder="Enter Title For Your Listing" value="<%=searchedListing.title%>">
+        <br>
+        <br>
+        <textarea cols="100" rows="10" name="description"> <%=searchedListing.description%> </textarea>
+        <br>
+        <br>
+        <input type="text"  name="url" placeholder="Enter Image URL/LINK" value="<%=searchedListing.image.url%>">
+        <br>
+        <br>
+        <input type="number" name="price" placeholder="Enter Price For Your Listing" value="<%=searchedListing.price%>">
+        <br>
+        <br>
+        <input type="text" name="country" placeholder="Enter Country For Your Listing" value="<%=searchedListing.country%>">
+        <br>
+        <br>
+        <input type="text" name="location" placeholder="Enter Location For Your Listing" value="<%=searchedListing.location%>">
+        <br>
+        <br>
+        <button>Update Listing</button>
+    </form>
+</body>
+</html>
