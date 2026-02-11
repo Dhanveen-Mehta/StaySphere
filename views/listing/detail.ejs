@@ -6,6 +6,8 @@
     <title><%=searchedListing.title%></title>
 </head>
 <body>
+    <%- include("../layouts/navbar.ejs") %>
+
     <p>
         Listing Id = <%= searchedListing._id%> <br>
         Listing Title = <%= searchedListing.title%><br>
@@ -20,6 +22,6 @@
     <form method="post" action="/listings/<%= searchedListing._id%>/delete?_method=DELETE">
         <button>Delete Listing</button>
     </form>
-    
+    <%- include("../layouts/footer.ejs") %>
 </body>
 </html> 

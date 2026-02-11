@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <%- include("../layouts/navbar.ejs") %>
     <h1>Add Details For Your New Listing</h1>
     <form method="POST" action="/listings/new">
         <input type="text" name="title" placeholder="Enter Title For Your Listing">
@@ -28,5 +29,6 @@
         <br>
         <button>Add Listing</button>
     </form>
+    <%- include("../layouts/footer.ejs") %>
 </body>
 </html>

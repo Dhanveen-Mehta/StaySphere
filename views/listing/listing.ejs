@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Listings </title>
+    <link rel="stylesheet" href="/css/listing.css">
 </head>
-<body>
-    <h1>Here Are your all Listings</h1>
-    <%for(i in allListings){%>
-        
-        <p>Title:<%=allListings[i].title%></p>
-        <form method="get" action="/listings/<%=allListings[i]._id%>/show">
-            <button>See In Detail</button>
-        </form>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-        
-    <%}%>       
-        <form method="GET" action="/listings/new">
-            <button>ADD NEW LISTING</button>
-        </form>
-</body>
-</html>
 
+<body>
+    <%- include("../layouts/navbar.ejs") %>
+        <!-- <h1>Here Are your all Listings</h1> -->
+        <%for(i in allListings){%>
+            <div id="listing">
+                <a href="/listings/<%=allListings[i]._id%>/show">
+                    <img id="listing-img" src="<%=allListings[i].image.url%>" alt="img">
+                    <p id="listing-title"><%=allListings[i].title%></p>
+                    <b><p id="listing-title">₹<%=allListings[i].price.toLocaleString("en-IN")%></p></b>
+                    <p id="listing-title"><%=allListings[i].location%></p>
+
+
+                    <!-- <form method="get" action="/listings/<%=allListings[i]._id%>/show">
+                        <button>See In Detail</button>
+                    </form>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -->
+                    <!-- <hr> -->
+                </a>
+            </div>
+
+            <%}%>
+                <div>
+                    <form method="GET" action="/listings/new">
+                        <button>ADD NEW LISTING</button>
+                    </form>
+                </div>
+
+    <%- include("../layouts/footer.ejs") %>
+
+</body>
+
+</html>

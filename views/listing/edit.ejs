@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
+    <%- include("../layouts/navbar.ejs") %>
+
     <h2>You are about to edit listing with id=<%=searchedListing._id%></h2>
      <form method="POST" action="/listings/<%=searchedListing._id%>/edit?_method=PUT">
         <input type="text" name="title" placeholder="Enter Title For Your Listing" value="<%=searchedListing.title%>">
@@ -28,5 +30,8 @@
         <br>
         <button>Update Listing</button>
     </form>
+
+    <%- include("../layouts/footer.ejs") %>
+
 </body>
 </html>
