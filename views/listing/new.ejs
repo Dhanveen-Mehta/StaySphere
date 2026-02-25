@@ -1,34 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>New Listing</title>
+    <link rel="stylesheet" href="/css/newlisting.css">
 </head>
+
 <body>
     <%- include("../layouts/navbar.ejs") %>
-    <h1>Add Details For Your New Listing</h1>
-    <form method="POST" action="/listings/new">
-        <input type="text" name="title" placeholder="Enter Title For Your Listing">
+    <br>
+        <h2>Add Details For Your New Listing</h2>
         <br>
-        <br>
-        <textarea cols="100" rows="10" name="description">Enter Description For Your Listing </textarea>
-        <br>
-        <br>
-        <input type="text"  name="url" placeholder="Enter Image URL/LINK">
-        <br>
-        <br>
-        <input type="number" name="price" placeholder="Enter Price For Your Listing">
-        <br>
-        <br>
-        <input type="text" name="country" placeholder="Enter Country For Your Listing">
-        <br>
-        <br>
-        <input type="text" name="location" placeholder="Enter Location For Your Listing">
-        <br>
-        <br>
-        <button>Add Listing</button>
-    </form>
-    <%- include("../layouts/footer.ejs") %>
+        
+        <div id="new-listing-form">
+            <form method="POST" action="/listings/new">
+                <h4>Enter Title For Your New Listing </h4><br>
+                <input required type="text" name="title" placeholder="Enter Title For Your Listing" id="new-listing-title">
+                <br>
+                <br>
+                <h4>Enter Description</h4>
+                <textarea required cols="100" rows="10" name="description" id="new-listing-description">Enter Description For Your Listing </textarea>
+                <br>
+                <br>
+                <h4>Enter Url For Picture</h4>
+                <input type="text" name="url" placeholder="Enter Image URL/LINK" id="new-listing-link">
+                <br>
+                <br>
+                <h4>Enter Price</h4>
+                <input required type="number" name="price" placeholder="Enter Price For Your Listing" id="new-listing-price">
+                <br>
+                <br>
+                <h4>Enter Country</h4>
+                <input required type="text" name="country" placeholder="Enter Country For Your Listing" id="new-listing-country">
+                <br>
+                <br>
+                <h4>Enter Location</h4>
+                <input required type="text" name="location" placeholder="Enter Location For Your Listing" id="new-listing-location">
+                <br>
+                <br>
+                <button id="new-listing-add-button">Add</button>
+            </form>
+        </div>
+        <%- include("../layouts/footer.ejs") %>
 </body>
+
 </html>

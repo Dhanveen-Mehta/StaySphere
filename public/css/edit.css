@@ -1,0 +1,83 @@
+body{
+  background-color:#f3eee6;
+}
+#edit-title{
+    height: 30px;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: large;
+}
+
+#edit-form{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+}
+
+#edit-description{
+    font-size: large;
+    padding: 25px;
+    border-radius: 25px;
+    margin-top: 10px;
+}
+
+#edit-link{
+       height: 30px;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: large;
+}
+
+#edit-price{
+       height: 30px;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: large;
+}
+
+#edit-country{
+       height: 30px;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: large;
+}
+
+#edit-location{
+       height: 30px;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: large;
+}
+
+#edit-button{
+    height: 25px;
+    width: 100px;
+    font-size: large;
+    background-color: orange;
+    border-radius: 25px;
+    color: black;
+    font-weight: bold;
+    /* display: flex; */
+    margin-bottom: 10px;
+    text-align: center;
+
+    /* padding-left: 6px; */
+}
+
+#edit-button:hover{
+    transform: scale(1.25);
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    background-color: rgb(249, 239, 148);
+}
+
+h2{
+    text-align: center;
+}

@@ -19,7 +19,9 @@
     /* justify-content: space-between; */
     position: static;
     top: 0;
-    border-bottom: 2px solid black;
+    border-bottom: 4px solid black;
+    position: sticky;
+    top:0;
 }
 
 #search-box{
@@ -51,18 +53,23 @@
 #navbar a:hover{
     transform: scale(1.25);
     transition-duration: 0.5s;
+    text-decoration: underline;
     transition-timing-function: ease-in-out;
     /* border: 2px solid beige; */
 }
 
-#navbar i:hover{
+#search-icon:hover{
     transform: scale(1.25);
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
-    /* border: 2px solid beige; */
+    
 }
 
 #navbar a{
     margin-left: 150px;
+}
+#logo{
+    margin-left: 0px;
+    font-size: xx-large;
 }
 

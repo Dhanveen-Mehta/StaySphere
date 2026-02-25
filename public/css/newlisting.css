@@ -1,0 +1,83 @@
+body{
+  background-color:#f3eee6;
+}
+#new-listing-title{
+    height: 30px;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: large;
+}
+
+#new-listing-form{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+}
+
+#new-listing-description{
+    font-size: large;
+    padding: 25px;
+    border-radius: 25px;
+    margin-top: 10px;
+}
+
+#new-listing-link{
+       height: 30px;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: large;
+}
+
+#new-listing-price{
+       height: 30px;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: large;
+}
+
+#new-listing-country{
+       height: 30px;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: large;
+}
+
+#new-listing-location{
+       height: 30px;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: large;
+}
+
+#new-listing-add-button{
+    height: 25px;
+    width: 100px;
+    font-size: large;
+    background-color: orange;
+    border-radius: 25px;
+    color: black;
+    font-weight: bold;
+    /* display: flex; */
+    margin-bottom: 10px;
+    text-align: center;
+
+    /* padding-left: 6px; */
+}
+
+#new-listing-add-button:hover{
+    transform: scale(1.25);
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    background-color: rgb(249, 239, 148);
+}
+
+h2{
+    text-align: center;
+}

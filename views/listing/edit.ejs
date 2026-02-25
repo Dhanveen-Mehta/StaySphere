@@ -1,37 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit <%= searchedListing.title %>
+    </title>
+    <link rel="stylesheet" href="/css/edit.css">
 </head>
+
 <body>
     <%- include("../layouts/navbar.ejs") %>
+        <h2>
+            <%=searchedListing.title%>
+        </h2>
+        <!-- <h2>You are about to edit listing with id=<%=searchedListing._id%>
+        </h2> -->
+        <br>
+        <br>
+        <div id="edit-form">
+            <form method="POST" action="/listings/<%=searchedListing._id%>/edit?_method=PUT">
+                <h4>Enter Title For Your New Listing </h4><br>
+                <input id="edit-title" type="text" name="title" placeholder="Enter Title For Your Listing"
+                    value="<%=searchedListing.title%>">
+                <br>
+                <br>
+                <h4>Enter Description</h4>
+                <textarea id="edit-description" cols="100" rows="10"
+                    name="description"> <%=searchedListing.description%> </textarea>
+                <br>
+                <br>
+                <h4>Enter Url For Picture</h4>
+                <input type="text" id="edit-link" name="url" placeholder="Enter Image URL/LINK"
+                    value="<%=searchedListing.image.url%>">
+                <br>
+                <br>
+                <h4>Enter Price</h4>
+                <input type="number" id="edit-price" name="price" placeholder="Enter Price For Your Listing"
+                    value="<%=searchedListing.price%>">
+                <p>in rupees</p>
+                <br>
+                <br>
+                <h4>Enter Country</h4>
+                <input type="text" name="country" id="edit-country" placeholder="Enter Country For Your Listing"
+                    value="<%=searchedListing.country%>">
+                <br>
+                <br>
+                <h4>Enter Location</h4>
+                <input type="text" name="location" id="edit-location" placeholder="Enter Location For Your Listing"
+                    value="<%=searchedListing.location%>">
+                <br>
+                <br>
+                <button id="edit-button">Update</button>
+            </form>
+        </div>
 
-    <h2>You are about to edit listing with id=<%=searchedListing._id%></h2>
-     <form method="POST" action="/listings/<%=searchedListing._id%>/edit?_method=PUT">
-        <input type="text" name="title" placeholder="Enter Title For Your Listing" value="<%=searchedListing.title%>">
-        <br>
-        <br>
-        <textarea cols="100" rows="10" name="description"> <%=searchedListing.description%> </textarea>
-        <br>
-        <br>
-        <input type="text"  name="url" placeholder="Enter Image URL/LINK" value="<%=searchedListing.image.url%>">
-        <br>
-        <br>
-        <input type="number" name="price" placeholder="Enter Price For Your Listing" value="<%=searchedListing.price%>">
-        <br>
-        <br>
-        <input type="text" name="country" placeholder="Enter Country For Your Listing" value="<%=searchedListing.country%>">
-        <br>
-        <br>
-        <input type="text" name="location" placeholder="Enter Location For Your Listing" value="<%=searchedListing.location%>">
-        <br>
-        <br>
-        <button>Update Listing</button>
-    </form>
-
-    <%- include("../layouts/footer.ejs") %>
+        <%- include("../layouts/footer.ejs") %>
 
 </body>
+
 </html>
