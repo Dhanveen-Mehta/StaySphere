@@ -81,3 +81,12 @@ body{
 h2{
     text-align: center;
 }
+
+#edit-form input:invalid{
+    border: 2px solid red;
+}
+
+
+#edit-form input:valid{
+    border: 2px solid rgb(0, 255, 0);
+}

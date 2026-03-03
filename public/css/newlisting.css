@@ -81,3 +81,12 @@ body{
 h2{
     text-align: center;
 }
+
+#new-listing-form input:invalid{
+    border: 2px solid red;
+}
+
+
+#new-listing-form input:valid{
+    border: 2px solid rgb(0, 255, 0);
+}

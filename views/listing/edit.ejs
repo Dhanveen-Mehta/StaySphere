@@ -21,7 +21,7 @@
         <div id="edit-form">
             <form method="POST" action="/listings/<%=searchedListing._id%>/edit?_method=PUT">
                 <h4>Enter Title For Your New Listing </h4><br>
-                <input id="edit-title" type="text" name="title" placeholder="Enter Title For Your Listing"
+                <input required id="edit-title" type="text" name="title" placeholder="Enter Title For Your Listing"
                     value="<%=searchedListing.title%>">
                 <br>
                 <br>
@@ -36,18 +36,18 @@
                 <br>
                 <br>
                 <h4>Enter Price</h4>
-                <input type="number" id="edit-price" name="price" placeholder="Enter Price For Your Listing"
+                <input min="0" required type="number" id="edit-price" name="price" placeholder="Enter Price For Your Listing"
                     value="<%=searchedListing.price%>">
-                <p>in rupees</p>
+                <p>in rupees for per night</p>
                 <br>
                 <br>
                 <h4>Enter Country</h4>
-                <input type="text" name="country" id="edit-country" placeholder="Enter Country For Your Listing"
+                <input required type="text" name="country" id="edit-country" placeholder="Enter Country For Your Listing"
                     value="<%=searchedListing.country%>">
                 <br>
                 <br>
                 <h4>Enter Location</h4>
-                <input type="text" name="location" id="edit-location" placeholder="Enter Location For Your Listing"
+                <input required type="text" name="location" id="edit-location" placeholder="Enter Location For Your Listing"
                     value="<%=searchedListing.location%>">
                 <br>
                 <br>
