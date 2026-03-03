@@ -6,6 +6,7 @@ const port = 8080;
 const path = require("path");
 const methodOverride = require("method-override");
 const Listing = require("./models/listing");
+const wrapAsync = require("./utils/wrapAsync")
 //---------------------------------------------------------------------------------------------------------------
 
 // Yaha ham sab Set aur use karenge 
@@ -15,6 +16,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 //-----------------------------------------------------------------------------------------------------------------
+
+
 
 // Yaha ham Server Start ki confirmation lenge
 app.listen(port, function () {
@@ -30,7 +33,7 @@ async function main() {
 try {
     main();
     console.log("Connected to DB");
-
+    
 } catch (err) {
     alert("Connection to DB failed contact Developer and let him know");
     console.log(err)
@@ -41,12 +44,12 @@ try {
 
 try {
     app.get("/", async function (req, res) {
-        res.send("Root is working Fine ");
+        res.render("login.ejs");                                                    
     });
 
 } catch (err) {
     alert("Some Error Happened Contact Developer");
-
+    
 };
 
 //---------------------------------------------------------------------------------------------------------------------------
@@ -95,11 +98,11 @@ app.post("/listings/new", async function (req, res) {
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //Yaha ab hum listing ki details ko edit aur update karne ke liye route create karenge
-app.get("/listings/:id/edit", async function (req, res) {
+app.get("/listings/:id/edit", wrapAsync(async function (req, res) {
     let { id } = req.params;
     let searchedListing = await Listing.findById(id);
     res.render("listing/edit.ejs", { searchedListing });
-});
+}));
 
 app.put("/listings/:id/edit", async function (req, res) {
     let { title, description, url, price, country, location } = req.body;
@@ -114,10 +117,9 @@ app.put("/listings/:id/edit", async function (req, res) {
         location: location,
         country: country
     });
-    //await updatedListing.save();
     console.log("Data Updated Safely");
     res.redirect("/listings");
-
+    
 });
 //----------------------------------------------------------------------------------------------------------------------------------
 
@@ -130,3 +132,13 @@ app.delete("/listings/:id/delete", async function (req, res) {
 });
 //-----------------------------------------------------------------------------------------------------------------------------------
 
+// YAha Ham error Handelling Middleware banayenge
+app.use(function(err,req,res,next){
+    let{status=500,message="Some Error Occured"} = err;
+    res.status(status).send("Error Aa gya BKL");
+})
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------
