@@ -32,7 +32,7 @@ async function main() {
 
 try {
     main();
-    console.log("Connected to DB 🔗✅📊");
+    console.log("Connected to DB 🔗 ✅ 📊");
     
 } catch (err) {
     alert("Connection to DB failed contact Developer and let him know");
@@ -60,7 +60,7 @@ try {
 // YAha Ham error Handelling Middleware banayenge
 app.use(function(err,req,res,next){
     let{status=500,message="Some Error Occured"} = err;
-    res.status(status).send("Error Aa gya BKL");
+    res.status(status).send(err.message);
 })
 
 
