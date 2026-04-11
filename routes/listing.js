@@ -71,7 +71,7 @@ router.put("/:id/edit", async function (req, res) {
         location: location,
         country: country
     });
-    console.log("Data Updated Safely");
+    console.log("Data Updated Safely ✅✅");
     res.redirect("/listings");
     
 });
