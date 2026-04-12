@@ -5,9 +5,11 @@ const app = express();
 const port = 8080;
 const path = require("path");
 const methodOverride = require("method-override");
+const session = require("express-session");
 const Listing = require("./models/listing");
 const wrapAsync = require("./utils/wrapAsync");
 const listingRouter = require("./routes/listing.js");
+const authRouter = require("./routes/authRoutes.js");
 //---------------------------------------------------------------------------------------------------------------
 
 // Yaha ham sab Set aur use karenge 
@@ -16,7 +18,9 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(session({secret:"mysupersecret",resave:false,saveUninitialized:true}));
 app.use("/listings", listingRouter);
+app.use("/auth",authRouter);
 //-----------------------------------------------------------------------------------------------------------------
 
 // Yaha ham Server Start ki confirmation lenge
