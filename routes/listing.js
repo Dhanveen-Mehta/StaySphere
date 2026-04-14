@@ -6,6 +6,10 @@ const Listing = require("../models/listing.js");
 const router = express.Router({mergeParams:true});
 const wrapAsync = require("../utils/wrapAsync.js");
 const Review = require("../models/review.js");
+const passportSetup = require("../passportConfig/passport.js");
+const {isLoggedIn} = require("../utils/middleware.js");
+
+
 //=========================================================================================================================
 
 
@@ -29,11 +33,11 @@ router.get("/:id/show", wrapAsync(async function (req, res) {
 
 // Yaha Ham New Listing ko add karne ke liye route banayenge
 
-router.get("/new", wrapAsync(async function (req, res) {
-    res.render("listing/new.ejs");
+router.get("/new",isLoggedIn, wrapAsync(async function (req, res) {
+        res.render("listing/new.ejs");
 }));
 
-router.post("/new", wrapAsync(async function (req, res) {
+router.post("/new",isLoggedIn, wrapAsync(async function (req, res) {
     let { title, description, url, price, country, location } = req.body;
     let newListing = new Listing({
         title: title,
@@ -53,13 +57,13 @@ router.post("/new", wrapAsync(async function (req, res) {
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //Yaha ab hum listing ki details ko edit aur update karne ke liye route create karenge
-router.get("/:id/edit", wrapAsync(async function (req, res) {
+router.get("/:id/edit",isLoggedIn, wrapAsync(async function (req, res) {
     let { id } = req.params;
     let searchedListing = await Listing.findById(id);
     res.render("listing/edit.ejs", { searchedListing });
 }));
 
-router.put("/:id/edit", wrapAsync(async function (req, res) {
+router.put("/:id/edit",isLoggedIn, wrapAsync(async function (req, res) {
     let { title, description, url, price, country, location } = req.body;
     let { id } = req.params;
     let updatedListing = await Listing.findByIdAndUpdate(id, {
@@ -79,7 +83,7 @@ router.put("/:id/edit", wrapAsync(async function (req, res) {
 //----------------------------------------------------------------------------------------------------------------------------------
 
 // Yaha ham delete route create karenge joh hamari listing ko delete karr dega 
-router.delete("/:id/delete", wrapAsync(async function (req, res) {
+router.delete("/:id/delete", isLoggedIn, wrapAsync(async function (req, res) {
     let { id } = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log("Listing Deleted", deletedListing);
@@ -89,7 +93,7 @@ router.delete("/:id/delete", wrapAsync(async function (req, res) {
 //---------------------------------------------------------------------------------------------------------------
 
 //Yaha Hum Reviews Route Create Karenge \
-router.post("/:id/review", wrapAsync(async function (req,res) {
+router.post("/:id/review",isLoggedIn, wrapAsync(async function (req,res) {
     let {id} = req.params;
     let review = req.body.review;
     let searchedListing = await Listing.findById(id);
@@ -104,7 +108,7 @@ router.post("/:id/review", wrapAsync(async function (req,res) {
 //===================================================================================================================
 
 //Yaha Hum Reviews ko delete karne ke liye route create karenge 
-router.delete("/:id/review/:reviewId/delete", wrapAsync(async function(req,res){
+router.delete("/:id/review/:reviewId/delete",isLoggedIn, wrapAsync(async function(req,res){
     let {id,reviewId} = req.params;
     //console.log(id,reviewId);
     await Review.findByIdAndDelete(reviewId);

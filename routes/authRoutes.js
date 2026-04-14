@@ -29,5 +29,15 @@ router.get("/login",wrapAsync(async function (req,res) {
 
 router.post("/login",passport.authenticate("local",{failureRedirect:"/auth/login"}), function(req,res){
     res.redirect("/listings");
-})
+});
+
+router.get("/logout", function(req,res,next){
+    req.logout((err)=>{
+        if(err){
+            return next(err);
+        };
+        console.log("logged OUT");
+        res.redirect("/listings");
+    });
+});
 module.exports = router;

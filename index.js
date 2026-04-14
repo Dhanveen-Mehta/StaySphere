@@ -10,6 +10,10 @@ const Listing = require("./models/listing");
 const wrapAsync = require("./utils/wrapAsync");
 const listingRouter = require("./routes/listing.js");
 const authRouter = require("./routes/authRoutes.js");
+const passport = require("passport");
+//require("./passportConfig/passport"); // config load
+const passportSetup = require("./passportConfig/passport.js");
+
 //---------------------------------------------------------------------------------------------------------------
 
 // Yaha ham sab Set aur use karenge 
@@ -19,6 +23,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(session({secret:"mysupersecret",resave:false,saveUninitialized:true}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use("/listings", listingRouter);
 app.use("/auth",authRouter);
 //-----------------------------------------------------------------------------------------------------------------
