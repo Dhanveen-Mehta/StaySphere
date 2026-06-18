@@ -8,11 +8,11 @@
      
 }
 #navbar{
-    padding-left: 20px;
+    padding-left: 0px;
     /* border: 2px solid black; */
     height: 100px;
     /* width:100%; */
-    font-size: larger;
+    font-size: large;
     background-color: antiquewhite;
     display: flex;
     align-items: center;
@@ -22,6 +22,7 @@
     border-bottom: 4px solid black;
     position: sticky;
     top:0;
+   
 }
 
 #search-box{
@@ -32,7 +33,7 @@
     font-size: large;
     font-style: oblique;
     margin-right: 5px;
-    margin-left: 150px;
+    margin-left: 100px;
 
 
 
@@ -66,7 +67,7 @@
 }
 
 #navbar a{
-    margin-left: 150px;
+    margin-left: 90px;
 }
 #logo{
     margin-left: 0px;

@@ -25,6 +25,11 @@ app.use(methodOverride("_method"));
 app.use(session({secret:"mysupersecret",resave:false,saveUninitialized:true}));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(function(req,res,next){
+    res.locals.currentUser = req.user;
+    next();
+}
+)
 app.use("/listings", listingRouter);
 app.use("/auth",authRouter);
 //-----------------------------------------------------------------------------------------------------------------

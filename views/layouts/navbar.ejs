@@ -13,9 +13,13 @@
             <a href="#footer-div"><i class="fa-solid fa-phone"></i>Contact Us</a>
             <input placeholder="Search" id="search-box"></input>
             <i id="search-icon" class="fa-solid fa-magnifying-glass"></i>
-            <!-- <a href="/auth/signup">SignUp</a>
-            <a href="/auth/login">LogIn</a> -->
-            
+            <% if(!currentUser){%>
+            <a href="/auth/signup">SignUp</a>
+            <a href="/auth/login">LogIn</a>
+            <%}%>
+            <% if(currentUser){%>
+            <a href="/auth/logout">LogOut</a>
+            <%}%>
         </div>
 
     
