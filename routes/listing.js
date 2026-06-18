@@ -7,7 +7,7 @@ const router = express.Router({mergeParams:true});
 const wrapAsync = require("../utils/wrapAsync.js");
 const Review = require("../models/review.js");
 const passportSetup = require("../passportConfig/passport.js");
-const {isLoggedIn} = require("../utils/middleware.js");
+const {isLoggedIn, isListingOwner} = require("../utils/middleware.js");
 
 
 //=========================================================================================================================
@@ -26,7 +26,7 @@ router.get("/", wrapAsync(async function (req, res) {
 
 router.get("/:id/show", wrapAsync(async function (req, res) {
     let { id } = req.params;
-    let searchedListing = await Listing.findById(id).populate("reviews");
+    let searchedListing = await Listing.findById(id).populate("reviews").populate("owner");
     res.render("listing/detail.ejs", { searchedListing })
 }));
 //------------------------------------------------------------------------------------------------------------------------------
@@ -49,6 +49,7 @@ router.post("/new",isLoggedIn, wrapAsync(async function (req, res) {
         location: location,
         country: country
     });
+    newListing.owner = req.user._id; 
     await newListing.save();
     console.log("Data Saved Safely")
     //console.log(title,description,url,price,country,location);
@@ -57,13 +58,13 @@ router.post("/new",isLoggedIn, wrapAsync(async function (req, res) {
 //-----------------------------------------------------------------------------------------------------------------------------
 
 //Yaha ab hum listing ki details ko edit aur update karne ke liye route create karenge
-router.get("/:id/edit",isLoggedIn, wrapAsync(async function (req, res) {
+router.get("/:id/edit",isLoggedIn, isListingOwner, wrapAsync(async function (req, res) {
     let { id } = req.params;
     let searchedListing = await Listing.findById(id);
     res.render("listing/edit.ejs", { searchedListing });
 }));
 
-router.put("/:id/edit",isLoggedIn, wrapAsync(async function (req, res) {
+router.put("/:id/edit",isLoggedIn, isListingOwner, wrapAsync(async function (req, res) {
     let { title, description, url, price, country, location } = req.body;
     let { id } = req.params;
     let updatedListing = await Listing.findByIdAndUpdate(id, {
@@ -83,7 +84,7 @@ router.put("/:id/edit",isLoggedIn, wrapAsync(async function (req, res) {
 //----------------------------------------------------------------------------------------------------------------------------------
 
 // Yaha ham delete route create karenge joh hamari listing ko delete karr dega 
-router.delete("/:id/delete", isLoggedIn, wrapAsync(async function (req, res) {
+router.delete("/:id/delete", isLoggedIn, isListingOwner, wrapAsync(async function (req, res) {
     let { id } = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log("Listing Deleted", deletedListing);

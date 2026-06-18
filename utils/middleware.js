@@ -14,4 +14,25 @@ module.exports.saveBaseUrl = function(req,res,next){
         res.locals.baseUrl = req.session.baseUrl
     };
     next()
+};
+
+module.exports.isListingOwner = async function(req,res,next){
+    let { id } = req.params;
+    let Listing = require("../models/listing.js");
+    
+    try {
+        let searchedListing = await Listing.findById(id);
+        
+        if(!searchedListing){
+            return res.status(404).send("Listing not found");
+        }
+        
+        if(!searchedListing.owner.equals(req.user._id)){
+            return res.status(403).send("You are not the owner of this listing. Only the owner can edit or delete.");
+        }
+        
+        next();
+    } catch (error) {
+        return res.status(500).send("Error checking ownership");
+    }
 }
