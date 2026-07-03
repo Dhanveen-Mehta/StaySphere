@@ -1,3 +1,4 @@
+
 module.exports.isLoggedIn = function(req,res,next){
     if(!req.isAuthenticated()){
         req.session.baseUrl = req.originalUrl;
@@ -34,5 +35,14 @@ module.exports.isListingOwner = async function(req,res,next){
         next();
     } catch (error) {
         return res.status(500).send("Error checking ownership");
+    }
+}
+
+module.exports.isReviewOwner = async function(req,res,next){
+    const Review = require("../models/review.js");
+    let{id,reviewId} = req.params;
+    let review = await Review.findById(reviewId);
+    if(!review.author.equals(req.user._id)){
+        return res.redirect(`/listings/${id}`);
     }
 }

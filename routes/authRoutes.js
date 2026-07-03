@@ -41,9 +41,10 @@ router.get("/login",wrapAsync(async function (req,res) {
 router.post("/login", saveBaseUrl  ,passport.authenticate("local",{failureRedirect:"/login"}), function(req,res){
     res.locals.currentUser = req.user;
     if(res.locals.baseUrl){
-    res.redirect(res.locals.baseUrl);
+        res.redirect(res.locals.baseUrl);
+        console.log("Logged in and Redirected to base url")
     }else{
-        res.redirect("/listings")
+        res.redirect("/listings");
     }
 });
 

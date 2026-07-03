@@ -51,7 +51,7 @@
         </p>
 
         <br>
-        <% if(currentUser._id.equals(searchedListing.owner._id)){%>
+        <% if(currentUser && currentUser._id.equals(searchedListing.owner._id)){%>
             <div id="detail-buttons">
                 <form method="get" action="/listings/<%=searchedListing._id%>/edit">
                     <button id="detail-edit-button">Edit</button>
@@ -109,7 +109,7 @@
 
                     <% for(i of searchedListing.reviews){%>
                         <div>
-                            <H4>Jane Doe</H4>
+                            <H4>@<%=i.author.username%></H4>
                             <p>Review: <b>
                                     <%=i.comment%>
                                 </b></p>

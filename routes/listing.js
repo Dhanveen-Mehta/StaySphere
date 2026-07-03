@@ -26,7 +26,7 @@ router.get("/", wrapAsync(async function (req, res) {
 
 router.get("/:id/show", wrapAsync(async function (req, res) {
     let { id } = req.params;
-    let searchedListing = await Listing.findById(id).populate("reviews").populate("owner");
+    let searchedListing = await Listing.findById(id).populate({path:"reviews",populate:{path:"author"}}).populate("owner");
     res.render("listing/detail.ejs", { searchedListing })
 }));
 //------------------------------------------------------------------------------------------------------------------------------
@@ -98,8 +98,12 @@ router.post("/:id/review",isLoggedIn, wrapAsync(async function (req,res) {
     let {id} = req.params;
     let review = req.body.review;
     let searchedListing = await Listing.findById(id);
+   // console.log(req.user.id);
     //console.log(searchedListing)
     let newReview = new Review(review);
+
+    newReview.author = req.user._id;
+    
     searchedListing.reviews.push(newReview);
     await newReview.save();
     await searchedListing.save();
