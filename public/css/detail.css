@@ -1,0 +1,211 @@
+#detail-picture{
+    height: 550px;
+    width: 750px;
+    border-radius: 20px;
+    
+}
+
+#detail-heading{
+    /* border: 2px solid black ; */
+    margin-top: 50px;
+    text-align: center;
+}
+body{
+     background-color:#f3eee6;
+}
+
+#detail-picture-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#detail-price{
+    font-size: large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    /* border: 2px solid black; */
+    margin-top: 15px;
+}
+
+#detail-delete-button{
+    height: 25px;
+    width: 100px;
+    font-size: large;
+    background-color: orange;
+    border-radius: 25px;
+    color: black;
+    font-weight: bold;
+    /* display: flex; */
+    margin-bottom: 10px;
+    text-align: center; 
+
+    /* padding-left: 6px; */
+}
+
+#detail-edit-button{
+    height: 25px;
+    width: 100px;
+    font-size: large;
+    background-color: orange;
+    border-radius: 25px;
+    color: black;
+    font-weight: bold;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+
+    /* padding-left: 6px; */
+}
+
+#detail-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#detail-edit-button:hover{
+     transform: scale(1.25);
+    transition-property: all;
+    transition-duration: 0.7s;
+    transition-timing-function: ease-in-out;
+    background-color: rgb(126, 230, 97);
+    
+}
+
+#detail-delete-button:hover{
+     transform: scale(1.25);
+    transition-property: all;
+    transition-duration: 0.7s;
+    transition-timing-function: ease-in-out;
+    background-color: rgb(249, 74, 62);
+    
+};
+
+
+/* SECTION WRAPPER */
+.reviews-section {
+  margin-top: 60px;
+}
+
+/* SECTION TITLE */
+.section-title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 25px;
+}
+
+/* CARD */
+.review-card {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* FORM GROUP */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* LABEL */
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* SLIDER */
+#detail-reviews-rating {
+  width: 100%;
+  accent-color: #ff385c;
+}
+
+/* TEXTAREA */
+#detail-reviews-comment {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  resize: none;
+}
+
+#detail-reviews-comment:focus {
+  outline: none;
+  border-color: #ff385c;
+  box-shadow: 0 0 0 3px rgba(255,56,92,0.15);
+}
+
+/* BUTTON */
+.review-card button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #ff385c;
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.review-card button:hover {
+  background: #e03150;
+}
+
+/* Reviews Section */
+#detail-reviews {
+  max-width: 900px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Each Review Card */
+#detail-reviews > div {
+  width: 200px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: 0.2s;
+}
+
+/* Hover Effect */
+#detail-reviews > div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* User Name */
+#detail-reviews h4 {
+  margin: 0 0 8px 0;
+  color: #222;
+  font-size: 16px;
+}
+
+/* Review Text */
+#detail-reviews p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+#detail-reviews-rating-text b {
+  color: #ff385c;
+  font-size: 16px;
+}
+
+#detail-reviews-delete-button{
+  height: 30px;
+  width: 95px;
+  border-radius: 25px;
+  background-color: #ff385c;
+  color: #ffffff;
+}

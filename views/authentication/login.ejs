@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+    <form id="login-form" method="POST" action="/auth/login">
+        <div id="login-form-div">
+            <i id="logo" class="fa-brands fa-airbnb"></i>
+            <br>
+            <br>
+            <!-- <img src="" alt="img"> -->
+            <h3>Hi Welcome Back!</h3>
+            <br>
+            <h4>Enter Your Account Details</h4>
+            <br>
+            <input required id="login-username" type="text" name="username" placeholder="Enter Your Username">
+            <br>
+            <br>
+            <input  required id="login-password" type="password" name="password" placeholder="Enter Your Password">
+            
+            <br>
+            <br>
+            <button type="submit">Login</button>
+            <br>
+            <br>
+            <p>Don't have a account ? <a href="/auth/signup">Create One!</a></p>
+
+
+        </div>
+
+
+
+
+
+
+    </form>
+
+    <%- include("../layouts/footer.ejs") %>
+
+</body>
+
+</html>

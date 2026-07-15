@@ -1,0 +1,147 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  
+}
+a{
+  color: rgba(255,255,255,0.7);
+
+}
+/* Background */
+body {
+  height: 100vh;
+  background: radial-gradient(circle at top left, #ff385c, #1e1e2f);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Floating blobs */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: #ff385c;
+  opacity: 0.2;
+  filter: blur(120px);
+  border-radius: 50%;
+}
+
+body::before {
+  top: -100px;
+  left: -100px;
+}
+
+body::after {
+  bottom: -100px;
+  right: -100px;
+}
+
+/* Card */
+form {
+  position: relative;
+  z-index: 2;
+  width: 360px;
+  padding: 35px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 10px 40px rgba(0,0,0,0.4),
+    inset 0 0 20px rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Heading */
+h1 {
+  position: absolute;
+  top: 60px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+/* Inputs */
+form input {
+  width: 100%;
+  padding: 14px 15px;
+  margin: 12px 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+/* Placeholder */
+form input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+/* Focus glow */
+form input:focus {
+  border-color: #ff385c;
+  box-shadow: 0 0 15px rgba(255,56,92,0.6);
+  background: rgba(255,255,255,0.18);
+}
+
+/* Button */
+form button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 18px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff385c, #ff7a18);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+/* Button hover */
+form button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(255,56,92,0.5);
+}
+
+/* Button click */
+form button:active {
+  transform: scale(0.97);
+}
+
+/* Small footer text */
+form::after {
+  content: "Already have an account? Login";
+  display: block;
+  margin-top: 18px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+  form {
+    width: 90%;
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 24px;
+    top: 30px;
+  }
+}

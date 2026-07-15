@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create your Account First</title>
+    <link rel="stylesheet" href="../css/signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <h1>Create Your Account With StaySphere 
+        <i id="logo" class="fa-brands fa-airbnb"></i>
+    </h1>
+
+    <form method="post" action="/auth/signup">
+        <label for="signup-email">Enter Your Email</label>
+        <input id="signup-email" name="email" type="email" placeholder="Enter Tour Email" required>
+        <br>
+        <br>
+        <label for="signup-username">Enter a Unique Username</label>
+        <input id="signup-username" name="username" type="text" placeholder="Enter Your Username" required>
+        <br>
+        <br>
+        <label for="signup-password">Enter Your Password</label>
+        <input id="signup-password" name="password" type="password" placeholder="Enter Your Password" required>
+        <br>
+        <br>
+        <button type="submit">Create Account</button>
+        <br>
+        <br>
+        <p> <a href="/auth/login">Already have an account ?Login</a></p>
+
+    </form>
+</body>
+</html>

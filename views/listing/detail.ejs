@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%=searchedListing.title%>
+    </title>
+    <link rel="stylesheet" href="/css/detail.css">
+</head>
+
+<body>
+    <%- include("../layouts/navbar.ejs") %>
+        <h2 id="detail-heading">
+            <%= searchedListing.title%>
+                <br>
+                <br>
+        </h2>
+
+        <!-- <p>
+       
+    </p> -->
+
+        <div id="detail-picture-div">
+            <img id="detail-picture" src="<%=searchedListing.image.url%>">
+        </div>
+
+        <p></p>
+
+        <p id="detail-price">
+            Owner: @<b>
+                <%=searchedListing.owner.username%>
+            </b>
+            <br>
+
+            Price: <b>₹<%= searchedListing.price.toLocaleString("en-IN")%> / night</b>
+            <br>
+            <!--Listing Id = <%= searchedListing._id%> <br> -->
+
+            Location: <b>
+                <%= searchedListing.location%>
+            </b>
+            <br>
+
+            Country: <b>
+                <%= searchedListing.country%>
+            </b>
+            <br>
+
+        </p>
+
+        <br>
+        <% if(currentUser && currentUser._id.equals(searchedListing.owner._id)){%>
+            <div id="detail-buttons">
+                <form method="get" action="/listings/<%=searchedListing._id%>/edit">
+                    <button id="detail-edit-button">Edit</button>
+                </form>
+
+
+                <form method="post" action="/listings/<%= searchedListing._id%>/delete?_method=DELETE">
+                    <button id="detail-delete-button">Delete</button>
+                </form>
+            </div>
+            <%}%>
+                <br>
+                <br>
+                <br>
+
+                <hr>
+                <br>
+                <br>
+
+                <!-- REVIEW SECTION -->
+                <div class="reviews-section">
+
+                    <h2 class="section-title">Leave a Review</h2>
+
+                    <div id="detail-reviews-form" class="review-card">
+                        <form method="post" action="/listings/<%=searchedListing._id%>/review">
+
+                            <!-- Rating -->
+                            <div class="form-group">
+                                <label for="detail-reviews-rating">Rating</label>
+                                <input required name="review[rating]" type="range" min="1" max="5"
+                                    id="detail-reviews-rating">
+                            </div>
+
+                            <!-- Comment -->
+                            <div class="form-group">
+                                <label for="detail-reviews-comment">Your Review</label>
+                                <textarea required rows="5" name="review[comment]" id="detail-reviews-comment"
+                                    placeholder="Write your experience..."></textarea>
+                            </div>
+
+                            <button>Add Review</button>
+
+                        </form>
+                    </div>
+
+                </div>
+
+                <br>
+                <br>
+                <br>
+
+                <h3 style="text-align: center; ">All Reviews</h3>
+                <div id="detail-reviews">
+
+                    <% for(i of searchedListing.reviews){%>
+                        <div>
+                            <H4>@<%=i.author.username%></H4>
+                            <p>Review: <b>
+                                    <%=i.comment%>
+                                </b></p>
+                            <p id="detail-reviews-rating-text">Rating: <b>
+                                    <%=i.rating%>
+                                </b></p>
+                            <br>
+                            <form method="post"
+                                action="/listings/<%=searchedListing._id%>/review/<%=i._id%>/delete?_method=DELETE">
+                                <button type="submit" id="detail-reviews-delete-button">Delete Review</button>
+                            </form>
+                        </div>
+
+                        <%}%>
+                </div>
+
+                <%- include("../layouts/footer.ejs") %>
+</body>
+
+</html>
