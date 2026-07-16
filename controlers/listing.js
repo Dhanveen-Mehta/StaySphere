@@ -1,4 +1,5 @@
 const Listing = require("../models/listing.js");
+const Review = require("../models/review.js")
 module.exports.index = async function (req, res) {
     let allListings = await Listing.find({});
     //console.log(allListings);
